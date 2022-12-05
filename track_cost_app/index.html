@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" class="rel">
+
+    <link href="./node_modules/@grapecity/spread-sheets/styles/gc.spread.sheets.excel2013white.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="./node_modules/@grapecity/spread-sheets/dist/gc.spread.sheets.all.min.js"></script>
+    <script type="text/javascript" src="./node_modules/@grapecity/spread-excelio/dist/gc.spread.excelio.min.js"></script>
+    
+    <title>Budget App</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="container">
+            <p id="error_msg"></p>
+            <div class="title">
+                <h2 class="title">
+                    Home Budget <a href="#"></a>
+                </h2>
+            </div>
+            <h3> New Entry </h3>
+            <form id="form">
+                <div class="form-control">
+                    <input type="text" id="text" onfocus="this.value='';" placeholder="Enter Text..."/>
+                </div>
+                <div class="form-control">
+                    <input type="number" id="amount" onfocus="this.value='';" placeholder="Enter Value..."/>
+                </div>
+                <button class="button" id="btn"> Add Transaction </button>
+            </form>
+        </div>
+        
+        <br>
+        <div class="income-expense">
+
+            <div class="bg-dark">
+                <h4> Inflow </h4>
+                <div class="income" id="income">$0.00</div>
+            </div>
+            <div class="bg-dark">
+                <h4> Outflow </h4>
+                <div class="expense" id="expense">$0.00</div>
+            </div>
+            <div class="bg-dark">
+                <h4> Balance </h4>
+                <div class="balance" id="balance">$0.00</div>
+            </div>
+            
+        </div>
+
+        <h3> History </h3>
+        <ul class="list" id="list"></ul>
+    </div>
+    <script type="module" src="app.js"></script>
+</body>
+</html>

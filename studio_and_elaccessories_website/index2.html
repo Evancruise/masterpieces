@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://kit.fontawesome.com/41591175b6.js" crossorigin="anonymous"></script>
+  <link href="css/style.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+  <!-- DataTable 連結 -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.2/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.2/js/jquery.dataTables.js"></script>
+
+  <!-- CSS 連結 -->
+  <link rel="stylesheet" href="dataTable.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&family=Open+Sans:ital@1&display=swap" rel="stylesheet">
+  
+  <title> 一日島遊 </title>
+</haed>
+
+<body> 
+  <!-- 頁首 -->
+  <header class="container-fluid d-block w-100">
+    <nav class="navbar navbar-expand-lg navbar-light">
+          <a class="navbar-brand" href="#">
+              <img src="pictures/logo.png">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-fill" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.004-.001.274-.11a.75.75 0 0 1 .558 0l.274.11.004.001 6.971 2.789Zm-1.374.527L8 5.962 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339Z"/>
+                </svg> 回首頁 </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="service_options.html"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg> 服務項目 </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://www.cwb.gov.tw/V8/C/W/world.html"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brightness-low-fill" viewBox="0 0 16 16">
+                  <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8.5 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm-11 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm-7.779 7.779a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707zM3.757 4.464a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707z"/>
+                </svg> 天氣查詢 </a>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-range" viewBox="0 0 16 16">
+                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
+                    <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4zM9 8a1 1 0 0 1 1-1h5v2h-5a1 1 0 0 1-1-1zm-8 2h4a1 1 0 1 1 0 2H1v-2z"/>
+                  </svg> 行程查詢及報名
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="index2.html"> 國內行程 </a></li>
+                  <li><a class="dropdown-item" href="index2_2.html"> 國外行程 </a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="https://www.china-airlines.com/tw/zh/booking/book-flights/flight-search"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z"/>
+                </svg> 航班查詢 </a>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-qr-code" viewBox="0 0 16 16">
+                    <path d="M2 2h2v2H2V2Z"/>
+                    <path d="M6 0v6H0V0h6ZM5 1H1v4h4V1ZM4 12H2v2h2v-2Z"/>
+                    <path d="M6 10v6H0v-6h6Zm-5 1v4h4v-4H1Zm11-9h2v2h-2V2Z"/>
+                    <path d="M10 0v6h6V0h-6Zm5 1v4h-4V1h4ZM8 1V0h1v2H8v2H7V1h1Zm0 5V4h1v2H8ZM6 8V7h1V6h1v2h1V7h5v1h-4v1H7V8H6Zm0 0v1H2V8H1v1H0V7h3v1h3Zm10 1h-1V7h1v2Zm-1 0h-1v2h2v-1h-1V9Zm-4 0h2v1h-1v1h-1V9Zm2 3v-1h-1v1h-1v1H9v1h3v-2h1Zm0 0h3v1h-2v1h-1v-2Zm-4-1v1h1v-2H7v1h2Z"/>
+                    <path d="M7 12h1v3h4v1H7v-4Zm9 2v2h-3v-1h2v-1h1Z"/>
+                  </svg> 會員專區
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">收費標準</a></li>
+                  <li><a class="dropdown-item" href="#">如何成為專屬會員</a></li>
+                  <li><a class="dropdown-item" href="#">包團諮詢|即將成團</a></li>
+                  <li><a class="dropdown-item" href="https://www.facebook.com/IntroCreate2020">粉絲專業</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">其他服務</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+    </nav>
+  </header>
+
+  <!-- 手刻月曆 -->
+  <!-- 
+  <div class="calendar">
+    <div class="calendar-header">
+        <div class=year-picker>
+            <span class="year-change" id="prev-year">
+                <pre><</pre>
+            </span>
+            <span id="year"> 2022 </span>
+            <span class="year-change" id="next-year">
+                <pre>></pre>
+            </span>
+        </div>
+        
+        <div class="month-picker">
+          <span class="month-change" id="prev-month">
+              <pre><</pre>
+          </span>
+          <span class="month-picker" id="month-picker"> February </span>
+          <span class="month-change" id="next-month">
+              <pre>></pre>
+          </span>
+        </div>
+
+        <div class="calendar-body">
+          <div class="calendar-week-day">
+            <div> 日 </div>
+            <div> 一 </div>
+            <div> 二 </div>
+            <div> 三 </div>
+            <div> 四 </div>
+            <div> 五 </div>
+            <div> 六 </div>
+          </div>
+          <div class="calendar-days">
+          </div>
+          <div class="month-list"> </div>
+        </div>
+    </div>  
+  </div>
+  -->
+
+  <!-- 設計月曆的Javascript連結 -->
+  <!-- <script src="js/script.js"> </script> -->
+
+  <br><br>
+  <div class="title">
+    <div class="container-fluid">
+      <div class="row align-text-left">
+        <h1> 最近熱門行程 </h1>
+      </div>
+    </div>
+  </div>
+  <br><br>
+
+  <!-- 最近活動 -->
+  <section id='latest'>       
+    <div class="container">
+      <div class='row'>
+        <div class='col-md-12 text-center'>
+          
+          <br><br>
+          <div class='row text-center'>
+            <h3> 高鐵 </h3>
+            <div class="btn-group1" role="group" aria-label="Basic radio toggle button group">
+              <input type="north1" class="btn-check" name="btn11" id="btn11" autocomplete="off" checked>
+              <label class="btn btn-outline-primary" for="btn11"> 北部 </label>
+            
+              <input type="middle1" class="btn-check" name="btn22" id="btn22" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btn22"> 中部 </label>
+            
+              <input type="sourth1" class="btn-check" name="btn33" id="btn33" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btn33"> 南部 </label>
+            </div>
+          </div>
+          <br><br>
+
+          <div class='row'>
+            <div class='col-md-4 text-center'>
+              <div class='outer'>
+                <a href="https://www.tripadvisor.com.tw/Attraction_Review-g29221-d560701-Reviews-Barrier_Reef-Molokai_Hawaii.html">
+                  <div class='upper'>
+                    <img src='pictures/north1.jpg'>
+                  </div>
+          
+                  <div class='lower'>
+                    <h3>行程時間 - 9月</h3>
+                    <span><i class="fas fa-address-book"></i> 台北西門意舍酒店 一泊二食 </span><br>
+                    <span><i class="far fa-clock"></i> Sep 5, 2022</span><br>
+                    <span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                      <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                    </svg> 1600 </span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          
+            <div class='col-md-4 text-center'>
+              <div class='outer'>
+                <a href="https://www.tripadvisor.com.tw/Attraction_Review-g198564-d190837-Reviews-Schloss_Neuschwanstein-Schwangau_Upper_Bavaria_Bavaria.html">
+                <div class='upper'>
+                  <img src='pictures/north2.jpg'>
+                </div>
+                <div class='lower'>
+                  <h3>行程時間 - 9月</h3>
+                  <span><i class="fas fa-address-book"></i> 台北慕舍酒店 七大酒莊聯名微醺 </span><br>
+                  <span><i class="far fa-clock"></i> Sep 18, 2022 </span><br>
+                  <span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                    <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                  </svg> 2200 </span>
+                </div>
+                </a>
+              </div>
+            </div>
+            
+            <div class='col-md-4 text-center'>
+              <div class='outer'>
+                <a href="https://www.tripadvisor.com.tw/Tourism-g45937-Elko_Nevada-Vacations.html">
+                  <div class='upper'>
+                    <img src='pictures/north3.jpg'>
+                    </div>
+                    <div class='lower'>
+                      <h3>行程時間 - 11月</h3>
+                      <span><i class="fas fa-address-book"></i> 新北淡水福容大飯店 盡收淡海景緻 </span><br>
+                      <span><i class="far fa-clock"></i> Nov 15, 2022 </span><br>
+                      <span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                      </svg> 2400 </span>
+                    </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <br><br>
+          <div class='row text-center'>
+            <h3> 火車 </h3>
+            <div class="btn-group2" role="group" aria-label="Basic radio toggle button group">
+              <input type="north1" class="btn-check" name="btn111" id="btn111" autocomplete="off" checked>
+              <label class="btn btn-outline-primary" for="btn111"> 北部 </label>
+              
+              <input type="middle1" class="btn-check" name="btn222" id="btn222" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btn222"> 中部 </label>
+              
+              <input type="sourth1" class="btn-check" name="btn333" id="btn3" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btn333"> 南部 </label>
+          
+              <input type="east1" class="btn-check" name="btn444" id="btn444" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btn444"> 東部 </label>
+            </div>
+          </div>
+          <br><br>
+
+          <div class='row'>
+            <div class='col-md-4 text-center'>
+              <div class='outer'>
+                <a href="https://www.tripadvisor.com.tw/Attraction_Review-g29221-d560701-Reviews-Barrier_Reef-Molokai_Hawaii.html">
+                <div class='upper'>
+                  <img src='pictures/north4.jpg'>
+                </div>
+                <div class='lower'>
+                  <h3>行程時間 - 8月</h3>
+                  <span><i class="fas fa-address-book"></i> 桃園火車站飯店自選 </span><br>
+                  <span><i class="far fa-clock"></i> Aug 28, 2022 </span><br>
+                  <span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                    <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                  </svg> 700 </span>
+                </div>
+                </a>
+              </div>
+            </div>
+            
+            <div class='col-md-4 text-center'>
+              <div class='outer'>
+                <a href="https://www.tripadvisor.com.tw/Attraction_Review-g198564-d190837-Reviews-Schloss_Neuschwanstein-Schwangau_Upper_Bavaria_Bavaria.html">
+                <div class='upper'>
+                  <img src='pictures/north5.jpg'>
+                </div>
+                <div class='lower'>
+                  <h3> 行程時間 - 9月 </h3>
+                  <span><i class="fas fa-address-book"></i> 中壢火車站飯店自選 </span><br>
+                  <span><i class="far fa-clock"></i> Sep 24, 2022 </span><br>
+                  <span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                    <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                  </svg> 800 </span>
+                </div>
+                </a>
+              </div>
+            </div>
+              
+            <div class='col-md-4 text-center'>
+              <div class='outer'>
+                <a href="https://www.tripadvisor.com.tw/Tourism-g45937-Elko_Nevada-Vacations.html">
+                  <div class='upper'>
+                    <img src='pictures/north6.jpg'>
+                  </div>
+                  <div class='lower'>
+                    <h3>行程時間 - 10月</h3>
+                    <span><i class="fas fa-address-book"></i> 新竹火車站飯店自選 </span><br>
+                    <span><i class="far fa-clock"></i> Oct 18, 2022 </span><br>
+                    <span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                      <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                    </svg> 1100 </span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+      
+          <br><br>
+          <div class='col-md-12 text-center'>
+            <h3> 一般公路 </h3>
+            <div class="btn-group3" role="group" aria-label="Basic radio toggle button group">  
+              <input type="sourth1" class="btn-check" name="btn3333" id="btn3333" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btn3333"> 南部 </label>
+            
+              <input type="east1" class="btn-check" name="btn4444" id="btn4444" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btn4444"> 東部 </label>
+            
+              <input type="outland1" class="btn-check" name="btn5555" id="btn5555" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btn5555"> 離島 </label>
+            </div>
+          </div>
+          <br><br>
+
+          <div class='row'>
+            <div class='col-md-4 text-center'>
+              <div class='outer'>
+                <a href="https://www.tripadvisor.com.tw/Attraction_Review-g29221-d560701-Reviews-Barrier_Reef-Molokai_Hawaii.html">
+                <div class='upper'>
+                  <img src='pictures/south7.jpg'>
+                </div>
+                <div class='lower'>
+                  <h3>行程時間 - 7月</h3>
+                  <span><i class="fas fa-address-book"></i> 台南和運自駕、住宿任選 </span><br>
+                  <span><i class="far fa-clock"></i> Jul 27, 2022 </span><br>
+                  <span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                    <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                  </svg> 2700 </span>
+                </div>
+                </a>
+              </div>
+            </div>
+              
+            <div class='col-md-4 text-center'>
+              <div class='outer'>
+                <a href="https://www.tripadvisor.com.tw/Attraction_Review-g198564-d190837-Reviews-Schloss_Neuschwanstein-Schwangau_Upper_Bavaria_Bavaria.html">
+                <div class='upper'>
+                  <img src='pictures/south8.jpg'>
+                </div>
+                <div class='lower'>
+                  <h3>行程時間 - 9月</h3>
+                  <span><i class="fas fa-address-book"></i> 嘉義台南雙城和運租車、住宿自選 </span><br>
+                  <span><i class="far fa-clock"></i> Sep 14, 2022</span><br>
+                  <span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                    <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                  </svg> 2350 </span>
+                </div>
+                </a>
+              </div>
+            </div>
+                
+            <div class='col-md-4 text-center'>
+              <div class='outer'>
+                <a href="https://www.tripadvisor.com.tw/Tourism-g45937-Elko_Nevada-Vacations.html">
+                <div class='upper'>
+                  <img src='pictures/south9.jpg'>
+                </div>
+                <div class='lower'>
+                  <h3>行程時間 - 12月</h3>
+                  <span><i class="fas fa-address-book"></i> 嘉義格上租車自駕、阿里山住宿 </span><br>
+                  <span><i class="far fa-clock"></i> Dec 09, 2022</span><br>
+                  <span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                    <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                  </svg> 2500 </span>
+                </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        <div>
+      </div>
+    </div>
+  </section>
+
+  <!--飯店照片的區域-->
+  <section id='latest'>       
+    <div class="container">
+
+      <div class='row'>
+        <div class='col-md-12 text-center'>
+          <h3> 熱門搜尋飯店 </h3>
+
+          <div class="btn-group2" role="group" aria-label="Basic radio toggle button group">
+            <input type="north1" class="btn-check" name="btn111" id="btn111" autocomplete="off" checked>
+            <label class="btn btn-outline-primary" for="btn111"> 北部 </label>
+            
+            <input type="middle1" class="btn-check" name="btn222" id="btn222" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btn222"> 中部 </label>
+            
+            <input type="sourth1" class="btn-check" name="btn333" id="btn3" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btn333"> 南部 </label>
+        
+            <input type="east1" class="btn-check" name="btn444" id="btn444" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btn444"> 東部 </label>
+          </div>
+
+          <br><br>
+
+          <div class='row'>
+            <div class='col-md-4 text-left'>
+              <div class='outer'>
+                <a href="https://www.tripadvisor.com.tw/Attraction_Review-g29221-d560701-Reviews-Barrier_Reef-Molokai_Hawaii.html">
+                <div class='upper'>
+                  <img src='pictures/hotel1.jpg'>
+                </div>
+                <div class='lower'>
+                  <span><i class="fas fa-address-book"></i> 捷絲旅 宜蘭礁溪館</span><br>
+                  <span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                  <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                  </svg> 2500 </span>
+                </div>
+                </a>
+              </div>
+            </div>
+          
+            <div class='col-md-4 text-left'>
+              <div class='outer'>
+                <a href="https://www.tripadvisor.com.tw/Attraction_Review-g198564-d190837-Reviews-Schloss_Neuschwanstein-Schwangau_Upper_Bavaria_Bavaria.html">
+                <div class='upper'>
+                  <img src='pictures/2.jpg'>
+                </div>
+                <div class='lower'>
+                  <span><i class="fas fa-address-book"></i> 墾丁長灘休閒飯店 </span><br>
+                  <span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                  <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                  </svg> 4100 </span>
+                </div>
+                </a>
+              </div>
+            </div>
+            
+            <div class='col-md-4 text-left'>
+              <div class='outer'>
+                <a href="https://www.tripadvisor.com.tw/Tourism-g45937-Elko_Nevada-Vacations.html">
+                <div class='upper'>
+                  <img src='pictures/3.jpg'>
+                </div>
+                <div class='lower'>
+                  <span><i class="fas fa-address-book"></i> 慕舍酒店 </span><br>
+                  <span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                </svg> 5200 </span>
+              </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      <div>
+    </div>
+  </section>
+  
+  <br><br>
+  <div class="title">
+    <div class="container-fluid">
+      <div class="row align-text-left">
+        <h1> 行程快速查詢 </h1>
+      </div>
+    </div>
+  </div>
+  <br><br>
+
+  <!-- DataTable -->
+  <section id="table">
+    <div class='col-md-12 text-center'>
+      <table id="table_id" class="display compact hover cell-border stripe responsive nowrap">
+        <thead>
+          <tr>
+            <!-- 欄位標題 -->
+            <th width="10px"> 出發時間 </th>
+            <th width="10px"> 結束時間 </th>
+            <th> 行程名稱 </th>
+            <th> 地區 </th>
+            <th> 價位 </th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <!-- 資料內容 -->
+          <tr>
+            <td> 2022/08/18 </td>
+            <td> 2022/08/26 </td>
+            <td> 初次窺探基隆嶼、田園農家樂 </td>
+            <td> 基隆、綠島 </td>
+            <td> 999 </td>
+
+          </tr>
+          <tr>
+            <td> 2022/09/19 </td>
+            <td> 2022/09/20 </td>
+            <td> 小琉球環島 </td>
+            <td> 台南 </td>
+            <td> 3599 </td>
+          </tr>
+          <tr>
+            <td> 2022/10/23 </td>
+            <td> 2022/10/26 </td>
+            <td> 台東熱氣球嘉年華、花東海岸新社梯田、親不知子斷崖開心農場三日 </td>
+            <td> 花蓮、台東 </td>
+            <td> 2000 </td>
+
+          </tr>
+          <tr>
+            <td> 2022/10/29 </td>
+            <td> 2022/10/31 </td>
+            <td> 台東池上藝術鐵花村、多良無敵海景、牡丹水上草原、墾丁逍遙三日遊</td>
+            <td> 墾丁、台東 </td>
+            <td> 2310 </td>
+          </tr>
+          <tr>
+            <td> 2022/11/12 </td>
+            <td> 2022/11/20 </td>
+            <td> 暢完水上活動一日遊 </td>
+            <td> 澎湖 </td>
+            <td> 2400 </td>
+          </tr>
+          <tr>
+            <td> 2022/09/18 </td>
+            <td> 2022/09/25 </td>
+            <td> 向日葵賞花手作體驗 </td>
+            <td> 台中 </td>
+            <td> 2300 </td>
+
+          </tr>
+          <tr>
+            <td> 2022/10/04 </td>
+            <td> 2022/10/10 </td>
+            <td> 碧海藍天度假趣 夜宿海生館‧沙灘度假三日</td>
+            <td> 小琉球 </td>
+            <td> 4100 </td>
+          </tr>
+          <tr>
+            <td> 2022/11/10 </td>
+            <td> 2022/11/18 </td>
+            <td> 季節限定環島遊、台東熱氣球嘉年華+花蓮輕鬆選 豐富三日遊 </td>
+            <td> 台東、高雄 </td>
+            <td> 3400 </td>
+          </tr>
+          <tr>
+            <td> 2022/09/25 </td>
+            <td> 2022/09/30 </td>
+            <td> 花東．遠雄海洋公園夜未眠+熱氣球嘉年華三日遊 </td>
+            <td> 花蓮、台東 </td>
+            <td> 4000 </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <script>
+  $(document).ready(function() {
+            $('#table_id').DataTable({
+
+                // 中文化
+                
+                "language": {
+                    "searchBuilder": {
+                        "add": "新增條件",
+                        "condition": "條件",
+                        "deleteTitle": "刪除過濾條件",
+                        "button": {
+                            "_": "複合查詢 (%d)",
+                            "0": "複合查詢"
+                        },
+                        "clearAll": "清空",
+                        "conditions": {
+                            "array": {
+                                "contains": "含有",
+                                "empty": "為空",
+                                "equals": "等於",
+                                "not": "不為",
+                                "notEmpty": "不為空"
+                            },
+                            "date": {
+                                "after": "大於",
+                                "before": "小於",
+                                "between": "在其中",
+                                "empty": "為空",
+                                "equals": "等於",
+                                "not": "不為",
+                                "notBetween": "不在其中",
+                                "notEmpty": "不為空"
+                            },
+                            "number": {
+                                "between": "在其中",
+                                "empty": "為空",
+                                "equals": "等於",
+                                "gt": "大於",
+                                "gte": "大於等於",
+                                "lt": "小於",
+                                "lte": "小於等於",
+                                "not": "不為",
+                                "notBetween": "不在其中",
+                                "notEmpty": "不為空"
+                            },
+                            "string": {
+                                "contains": "含有",
+                                "empty": "為空",
+                                "endsWith": "字尾為",
+                                "equals": "等於",
+                                "not": "不為",
+                                "notEmpty": "不為空",
+                                "startsWith": "字首為"
+                            }
+                        },
+                        "data": "欄位",
+                        "leftTitle": "群組條件",
+                        "logicAnd": "且",
+                        "logicOr": "或",
+                        "rightTitle": "取消群組",
+                        "title": {
+                            "_": "複合查詢 (%d)",
+                            "0": "複合查詢"
+                        },
+                        "value": "內容"
+                    },
+                    
+                    /*
+                    "editor": {
+                        "close": "關閉",
+                        "create": {
+                            "button": "新增",
+                            "title": "建立新項目",
+                            "submit": "建立"
+                        },
+                        "edit": {
+                            "button": "編輯",
+                            "title": "編輯項目",
+                            "submit": "更新"
+                        },
+                        "remove": {
+                            "button": "刪除",
+                            "title": "刪除",
+                            "submit": "刪除",
+                            "confirm": {
+                                "_": "您確定要刪除 %d 筆資料嗎？",
+                                "1": "您確定要刪除 %d 筆資料嗎？"
+                            }
+                        },
+                        "multi": {
+                            "restore": "回復修改",
+                            "title": "每行有不同的價值",
+                            "info": "您選擇了多個項目，每項目都有不同的價值。如果您想所有選擇的項目都用同一個價值，可以在這裏輸入一個價值。要不然它們會保留原本各自的價值",
+                            "noMulti": "此列不容許同時編輯多個項目"
+                        },
+                        "error": {
+                            "system": "系統發生錯誤(更多資訊)"
+                        }
+                    },
+                    */
+                    "autoFill": {
+                        "cancel": "取消"
+                    },
+                    "buttons": {
+                        "copySuccess": {
+                            "_": "複製了 %d 筆資料",
+                            "1": "複製了 1 筆資料"
+                        },
+                        "copyTitle": "已經複製到剪貼簿",
+                        "excel": "Excel",
+                        "pdf": "PDF",
+                        "print": "列印",
+                        "copy": "複製"
+                    },
+                    /*
+                    "searchPanes": {
+                        "collapse": {
+                            "_": "搜尋面版 (%d)",
+                            "0": "搜尋面版"
+                        },
+                        "emptyPanes": "沒搜尋面版",
+                        "loadMessage": "載入搜尋面版中...",
+                        "clearMessage": "清空"
+                    },
+                    */
+                    "select": {
+                        "rows": {
+                            "_": "%d 列已選擇",
+                            "1": "%d 列已選擇"
+                        }
+                    }
+                }
+
+            });
+        });    
+  </script>
+
+  <br><br>
+
+  <!-- 旅遊報名區塊 -->
+  <section id='search_table'>
+    <div class='row container-fluid text-center'>
+     <h2> 旅遊/訂房報名 </h2>
+     <div class="col-sm-4 form-floating">
+      <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+       <option selected> 不限 </option>
+       <option value="1"> 基隆 </option>
+       <option value="2"> 台北 </option>
+       <option value="3"> 新北 </option>
+       <option value="4"> 桃園 </option>
+       <option value="5"> 新竹 </option>
+       <option value="6"> 苗栗 </option>
+       <option value="7"> 台中 </option>
+       <option value="8"> 雲林 </option>
+       <option value="9"> 嘉義 </option>
+       <option value="10"> 台南 </option>
+       <option value="11"> 高雄 </option>
+       <option value="12"> 屏東 </option>
+      </select>
+      <label for="floatingSelect"> 出發地 </label>
+     </div>
+
+     <div class="col-sm-4 form-floating">
+      <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+       <option selected> 不限 </option>
+       <option value="1"> 基隆 </option>
+       <option value="2"> 台北 </option>
+       <option value="3"> 新北 </option>
+       <option value="4"> 桃園 </option>
+       <option value="5"> 新竹 </option>
+       <option value="6"> 苗栗 </option>
+       <option value="7"> 台中 </option>
+       <option value="8"> 雲林 </option>
+       <option value="9"> 嘉義 </option>
+       <option value="10"> 台南 </option>
+       <option value="11"> 高雄 </option>
+       <option value="12"> 屏東 </option>
+      </select>
+      <label for="floatingSelect"> 目的地 </label>
+     </div>
+
+     <div class="col-sm-4 form-floating">
+       <input type="text" class="form-control" id="floatingInputValue" name="datefilter" value="" />
+       <label for="floatingInputValue"> 出發時間區間 </label>
+     </div>
+ 
+     <script type="text/javascript">
+     $(function() {
+     
+       $('input[name="datefilter"]').daterangepicker({
+           autoUpdateInput: false,
+           locale: {
+               cancelLabel: 'Clear'
+           }
+       });
+     
+       $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+           $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+       });
+     
+       $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+           $(this).val('');
+       });
+     
+     });
+     </script>
+
+     <div class="col-sm-4 form-floating">
+       <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+        <option selected> 0 </option>
+        <option value="1"> 1 </option>
+        <option value="2"> 2 </option>
+        <option value="3"> 3 </option>
+        <option value="4"> 4 </option>
+        <option value="5"> 5 </option>
+        <option value="6"> 6以上 </option>
+       </select>
+       <label for="floatingSelect"> 同行人數 </label>
+     </div>
+
+     <div class="col-sm-4 form-floating">
+      <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+       <option selected> 不限 </option>
+       <option value="1"> 腳踏車 </option>
+       <option value="2"> 觀光巴士 </option>
+       <option value="3"> 租車 </option>
+       <option value="4"> 航空 </option>
+       <option value="5"> 高鐵 </option>
+       <option value="6"> 火車 </option>
+      </select>
+      <label for="floatingSelect"> 旅程交通工具 </label>
+     </div>
+
+     <div class="col-sm-4 form-floating">
+      <input type="text" class="form-control" id="floatingInputValue" value="" />
+      <label for="floatingSelect"> 旅館/飯店名稱 </label>
+     </div>
+
+     <div class="col-sm-4 form-floating">
+      <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+       <option selected> 0 </option>
+       <option value="1"> 1 </option>
+       <option value="2"> 2 </option>
+       <option value="3"> 3 </option>
+       <option value="4"> 4 </option>
+       <option value="5"> 5 </option>
+       <option value="6"> 6以上 </option>
+      </select>
+      <label for="floatingSelect"> 入住間數 </label>
+     </div>
+
+     <div class="col-sm-1 form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+      <label class="form-check-label" for="inlineCheckbox1"> 可預訂住宿</label>
+     </div>
+     
+     <div class="col-sm-1 form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+      <label class="form-check-label" for="inlineCheckbox2"> 防疫旅館 </label>
+     </div>
+     
+     <div class="col-sm-1 form-check">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+      <label class="form-check-label" for="inlineCheckbox1"> 優惠行程 </label>
+     </div>
+     
+     <div class="col-sm-1 form-check">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+      <label class="form-check-label" for="inlineCheckbox1"> 美食資訊 </label>
+     </div>
+     
+     <div class="col-sm-1 form-check">
+      <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        送出
+      </button>
+     </div>
+
+     <!-- Modal -->
+     <div class="modal fade" id="exampleModal" tabindex="8" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"> 成功通知 </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            送出資料成功~ 感謝您報名此行程
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> 關閉 </button>
+            <a target="_blank" class="btn btn-primary" href="index.html"> 繼續前進網頁 </a>
+          </div>
+        </div>
+      </div>
+     </div>
+    </div>
+  </section>
+
+  <br><br>
+
+  <!--footer的區塊-->
+  <footer class="container-fuild d-block w-100">
+    <div class='row'>
+    <div class='col-md-4 text-right'>
+      <img src='pictures/logo.png'>
+      <p>讓我們邊玩樂邊欣賞每個國家的奇觀吧！</p>
+    </div>
+    <div class='col-md-4 text-left'>
+      <h4>連結</h4>
+      <ul>
+          <li><a href='index.html'>主頁</a></li>
+          <li><a href='all.html'>相關行程</a></li>
+      </ul>
+      <ul>
+          <li><a href='faq.html'>常見問題</a></li>
+          <li><a href='contact.html'>聯絡我們</a></li>
+      </ul>             
+    </div>
+    <div class='col-md-4 text-left'>
+      <h4> 聯絡我們 </h4>
+      <p> Line id: @12845asd <br>
+       Phone: (07) 3111-111<br>
+       E-Mail: <a href='mailto:evan1632885@gmail.com'>evan1632885@gmail.com</a>
+        </p>
+    </div>
+    </div>
+  </footer>
+</body>
+</html>

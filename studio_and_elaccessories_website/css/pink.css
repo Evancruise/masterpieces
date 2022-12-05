@@ -1,0 +1,18 @@
+.pagination .page-item .page-link{
+  border: solid;
+  border-color: pink;
+  color: pink;
+  border-radius: 10%;
+}
+.pagination .page-item .page-link:hover{
+  background-color: rgb(215, 214, 214);
+  color: rgb(254, 58, 91);
+}
+.pagination .page-item .page-link:active{
+  color: rgb(247, 85, 112);
+  cursor: auto;
+}
+
+.pagination .page-item{
+  margin: 0 5px;
+}

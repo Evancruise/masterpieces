@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS background position calc</title>
+  <style>
+    /* class */
+    .emText{
+      color: red;
+    }
+    .linda{
+      color: #dcdcdc;
+    }
+    .mary{
+      color: yellow;
+      background-color: red;
+    }
+    .paul{
+      color: green;
+    }
+    /* ID */
+    #lastest{
+      color: blue;
+    }
+
+    /* 型態選擇器、群組選擇器 */
+    h1,h2,h3,h4,h5,h6{
+      font-family: 'Noto Sans TC', sans-serif;
+      color: pink;
+    }
+    p,a,span,li,label{
+      font-family: 'Open Sans', sans-serif;
+      color: brown;
+    }
+    /* 通用選擇器 */
+    *{
+      color: black ;
+      font-size: 20px;
+      letter-spacing: 10px;
+      line-height: 1.5;
+      font-weight: 500;
+      text-align: center;
+      font-family: "標楷體";
+    }
+
+    /* attribute選擇器(少用)*/
+    div{
+      color: black;
+    }
+    div[title]{
+      color: red;
+    }
+    div[title=fishbecat]{
+      color: green;
+    }
+    div[title~=fishbecat’s]{
+      color: blue;
+    }
+
+    /* 後代選擇器(a在h1裡面才會套用) */
+    a{
+      color: black;
+    }
+    h1 a {
+      color: red;
+    }
+    #wrapper a {
+      color: yellow;
+    }
+
+    /* 子選擇器 */
+
+    article > p{
+      color: blue;
+    }
+    .mary > p {
+      color: blueviolet;
+    }
+    #wa > p {
+      color: aqua;
+    }
+
+    /* 相鄰選擇器 */
+    h3{
+      color: red;
+    }
+    h3 + p{
+      color: green;
+    }
+
+    div{
+      background: red;
+      width: 200px;
+      height: 200px;
+      overflow: hidden;
+      border: solid black;
+      padding: 5px 10px 20px 30px;
+      margin: 50px  ;
+      }
+      a{
+        display: block;
+      }
+
+  </style>
+</head>
+<body>
+  <p class="emText">CLASS測試</p>
+  <p class="linda">123</p>
+  <p class="mary">123</p>
+  <p class="paul">123</p>
+  <!--同樣css效果會以最後的class為基準-->
+  <p class="linda mary paul">123</p>
+
+  <p id="lastest">ID測試_ID只能有一個</p>
+
+  <li>
+    <span>
+      <a href="portfolio.html" target="_blank">see my portfolio</a>     
+    </span>
+  </li>
+  
+  <div>此區塊會套用黑色</div>
+  <div title="blog">此區塊會套用黑色</div>
+  <div title="fishbecat">此區塊會套用黑色</div>
+  <div title="fishbecat’s blog">此區塊會套用黑色</div>  
+
+
+  <a href="#">單純a標籤</a>
+  <h1>
+    <a href="#">這是在h1裡面的a</a>
+  </h1>
+  <div id="wrapper">
+    <a href="#">這是在id="wrapper"裡面的a</a>
+  </div>
+
+  <div class="wrapper">
+    <p>看一下是甚麼顏色</p>
+  </div>
+
+  <h3>標題套用紅色</h3>
+  <p>跟h3相鄰的變成綠色</p>
+  <p>不相鄰的就變回預設值</p>
+
+  <!--子選擇器示範-->
+  <article>
+    <p>ppppppppp</p>
+  </article>
+  <p>aaaaaaaaaa</p>
+  <div class="mary">
+    <p>Mary</p>
+  </div>
+  <div id="wa">
+    <p>wa</p>
+  </div>
+
+
+  <div>HHHHHHHHHHHHHHHHHHHHHHH</div>
+  <div>AAAAAAAAAAAAA</div>
+</body>
+</html>

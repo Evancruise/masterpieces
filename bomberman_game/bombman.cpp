@@ -78,16 +78,28 @@ int main()
 	int bombermanOriY;
 	char filename[64];
 	
+	int lives = 3;
+	int nScore = 0;
+	int maximumbombNumber = 10;
+	// int temp_bombNumber = 0;
+	int nScreenSpeed = 100;
+	int BombPeriod = 5;
+	int treature_tmp = 0;
+	int tix = 0, tiy = 0;
+	bool levelexitOpen = false;
+	
+	vector<vector<int>> dirs = {{0, -1}, {1, 0}, {0, 1}, {-1, 0}};
+	map<int, pair<chrono::time_point<chrono::system_clock>, pair<int,int>>> bombclock;
+	map<int, int> Checkexplosion;
+	
 	swprintf(&screen[ 6 * nScreenWidth + 40], 30, L"   =======================   ");
 	swprintf(&screen[ 7 * nScreenWidth + 40], 30, L" ||        Bombman        || ");
 	swprintf(&screen[ 8 * nScreenWidth + 40], 30, L"   =======================   ");
-	swprintf(&screen[12 * nScreenWidth + 40], 30, L"  PRESS SPACE TO START GAME  ");
-	swprintf(&screen[18 * nScreenWidth + 40], 30, L"   1 Player easy mode          ");
-	swprintf(&screen[20 * nScreenWidth + 40], 30, L"   2 Players easy mode         ");
-	swprintf(&screen[22 * nScreenWidth + 40], 30, L"   1 Player medium mode          ");
-	swprintf(&screen[24 * nScreenWidth + 40], 30, L"   2 Players medium mode         ");
-	swprintf(&screen[26 * nScreenWidth + 40], 30, L"   1 Player hard mode          ");
-	swprintf(&screen[28 * nScreenWidth + 40], 30, L"   2 Players hard mode         ");
+	swprintf(&screen[18 * nScreenWidth + 40], 30, L"   Easy mode          ");
+	swprintf(&screen[20 * nScreenWidth + 40], 30, L"   Medium mode          ");
+	swprintf(&screen[22 * nScreenWidth + 40], 30, L"   Hard mode         ");
+	
+	swprintf(&screen[26 * nScreenWidth + 40], 30, L"  PRESS SPACE TO START GAME  ");
 				
 	while (!bstartKey){
 		auto t1 = chrono::system_clock::now();
@@ -122,65 +134,39 @@ int main()
 		// swprintf(&screen[24 * nScreenWidth + 40], 30, L" choiceflop: %d           ", choiceflop);
 		
 		if (choiceNumberOfPlayer) {
-			choiceflop %= 6;
+			choiceflop %= 3;
 			
 			switch (choiceflop+1) {
 				case 1:
-					swprintf(&screen[18 * nScreenWidth + 40], 30, L" * 1 Player easy mode          ");
-					swprintf(&screen[20 * nScreenWidth + 40], 30, L"   2 Players easy mode         ");
-					swprintf(&screen[22 * nScreenWidth + 40], 30, L"   1 Player medium mode          ");
-					swprintf(&screen[24 * nScreenWidth + 40], 30, L"   2 Players medium mode         ");
-					swprintf(&screen[26 * nScreenWidth + 40], 30, L"   1 Player hard mode          ");
-					swprintf(&screen[28 * nScreenWidth + 40], 30, L"   2 Players hard mode         ");
+					swprintf(&screen[18 * nScreenWidth + 40], 30, L" * Easy mode          ");
+					swprintf(&screen[20 * nScreenWidth + 40], 30, L"   Medium mode          ");
+					swprintf(&screen[22 * nScreenWidth + 40], 30, L"   Hard mode         ");
+					maximumbombNumber = 10;
 					break;
 				case 2:
-					swprintf(&screen[18 * nScreenWidth + 40], 30, L"   1 Player easy mode          ");
-					swprintf(&screen[20 * nScreenWidth + 40], 30, L" * 2 Players easy mode         ");
-					swprintf(&screen[22 * nScreenWidth + 40], 30, L"   1 Player medium mode          ");
-					swprintf(&screen[24 * nScreenWidth + 40], 30, L"   2 Players medium mode         ");
-					swprintf(&screen[26 * nScreenWidth + 40], 30, L"   1 Player hard mode          ");
-					swprintf(&screen[28 * nScreenWidth + 40], 30, L"   2 Players hard mode         ");
+					swprintf(&screen[18 * nScreenWidth + 40], 30, L"   Easy mode          ");
+					swprintf(&screen[20 * nScreenWidth + 40], 30, L" * Medium mode          ");
+					swprintf(&screen[22 * nScreenWidth + 40], 30, L"   Hard mode         ");
+					maximumbombNumber = 5;
 					break;
 				case 3:
-					swprintf(&screen[18 * nScreenWidth + 40], 30, L"   1 Player easy mode          ");
-					swprintf(&screen[20 * nScreenWidth + 40], 30, L"   2 Players easy mode         ");
-					swprintf(&screen[22 * nScreenWidth + 40], 30, L" * 1 Player medium mode          ");
-					swprintf(&screen[24 * nScreenWidth + 40], 30, L"   2 Players medium mode         ");
-					swprintf(&screen[26 * nScreenWidth + 40], 30, L"   1 Player hard mode          ");
-					swprintf(&screen[28 * nScreenWidth + 40], 30, L"   2 Players hard mode         ");
-					break;
-				case 4:
-					swprintf(&screen[18 * nScreenWidth + 40], 30, L"   1 Player easy mode          ");
-					swprintf(&screen[20 * nScreenWidth + 40], 30, L"   2 Players easy mode         ");
-					swprintf(&screen[22 * nScreenWidth + 40], 30, L"   1 Player medium mode          ");
-					swprintf(&screen[24 * nScreenWidth + 40], 30, L" * 2 Players medium mode         ");
-					swprintf(&screen[26 * nScreenWidth + 40], 30, L"   1 Player hard mode          ");
-					swprintf(&screen[28 * nScreenWidth + 40], 30, L"   2 Players hard mode         ");
-					break;
-				case 5:
-					swprintf(&screen[18 * nScreenWidth + 40], 30, L"   1 Player easy mode          ");
-					swprintf(&screen[20 * nScreenWidth + 40], 30, L"   2 Players easy mode         ");
-					swprintf(&screen[22 * nScreenWidth + 40], 30, L"   1 Player medium mode          ");
-					swprintf(&screen[24 * nScreenWidth + 40], 30, L"   2 Players medium mode         ");
-					swprintf(&screen[26 * nScreenWidth + 40], 30, L" * 1 Player hard mode          ");
-					swprintf(&screen[28 * nScreenWidth + 40], 30, L"   2 Players hard mode         ");
-					break;
-				case 6:
-					swprintf(&screen[18 * nScreenWidth + 40], 30, L"   1 Player easy mode          ");
-					swprintf(&screen[20 * nScreenWidth + 40], 30, L"   2 Players easy mode         ");
-					swprintf(&screen[22 * nScreenWidth + 40], 30, L"   1 Player medium mode          ");
-					swprintf(&screen[24 * nScreenWidth + 40], 30, L"   2 Players medium mode         ");
-					swprintf(&screen[26 * nScreenWidth + 40], 30, L"   1 Player hard mode          ");
-					swprintf(&screen[28 * nScreenWidth + 40], 30, L" * 2 Players hard mode         ");
+					swprintf(&screen[18 * nScreenWidth + 40], 30, L"   Easy mode          ");
+					swprintf(&screen[20 * nScreenWidth + 40], 30, L"   Medium mode          ");
+					swprintf(&screen[22 * nScreenWidth + 40], 30, L" * Hard mode         ");
+					maximumbombNumber = 5;
 					break;
 				default:
+					swprintf(&screen[18 * nScreenWidth + 40], 30, L" * Easy mode          ");
+					swprintf(&screen[20 * nScreenWidth + 40], 30, L"   Medium mode          ");
+					swprintf(&screen[22 * nScreenWidth + 40], 30, L"   Hard mode         ");
+					maximumbombNumber = 10;
 					break;
 			}
 			choiceflop++;
 		}
 		
-		swprintf(&screen[14 * nScreenWidth + 40], 30, L"  CHOOSE A LEVEL YOU WANT  ");
-		swprintf(&screen[16 * nScreenWidth + 40], 30, L"        LEVEL %d           ", level);
+		// swprintf(&screen[14 * nScreenWidth + 40], 30, L"  CHOOSE A LEVEL YOU WANT  ");
+		swprintf(&screen[16 * nScreenWidth + 40], 30, L"        Level %d           ", level);
 		
 		if (bstartKey)
 			break;
@@ -188,25 +174,13 @@ int main()
 		WriteConsoleOutputCharacterW(hConsole, screen, nScreenWidth * nScreenHeight, { 0,0 }, &dwBytesWritten);
 	}
     
-	int lives = 3;
-	int nScore = 0;
-	int maximumbombNumber = 1;
-	int temp_bombNumber = 0;
-	int nScreenSpeed = 100;
-	int BombPeriod = 5;
-	int treature_tmp = 0;
-	int tix = 0, tiy = 0;
-	
-	bool levelexitOpen = false;
-		
-	vector<vector<int>> dirs = {{0, -1}, {1, 0}, {0, 1}, {-1, 0}};
-	map<int, pair<chrono::time_point<chrono::system_clock>, pair<int,int>>> bombclock;
-	map<int, int> Checkexplosion;
 	for (int x=0; x<maximumbombNumber; x++){
 		Checkexplosion.insert({x,0});
 	}	
 	
-	while(lives)
+	bool GameToexit = false;
+	
+	while(lives && !GameToexit)
 	{
 		//list<Bomberman> bomberman = {{14,16}};
 		//list<Enemy> enemy1 = {{36,16}};
@@ -260,7 +234,7 @@ int main()
       		int block = 0;
       		int enemyNumber = 0;
       		while(getline(newfile, tp)){ //read data from file object and put it into string.
-         		cout << tp << endl; //print the data of the string
+         		// cout << tp << endl; //print the data of the string
          		int row = 0;
          		for (auto& t : tp) {
          			if (t == '@') {
@@ -397,6 +371,7 @@ int main()
 				
 				de = rand()%4;
 				
+				if (enemypattern[e.first] == '$') {
 				switch (de) {
 					case 0:
 						if (e.second.first.front().y - 1 < 4 
@@ -443,6 +418,46 @@ int main()
 						e.second.first.push_front({ e.second.first.front().x, e.second.first.front().y });
 						break;	
 				}
+				}
+				
+				if (enemypattern[e.first] == '&') {
+				switch (de) {
+					case 0:
+						if (e.second.first.front().y - 1 < 4 
+						|| screen[(e.second.first.front().y - 1) * nScreenWidth + e.second.first.front().x] == L'*')
+							e.second.first.push_front({ e.second.first.front().x, e.second.first.front().y });
+						else
+							e.second.first.push_front({ e.second.first.front().x, e.second.first.front().y - 1 });
+						break;
+						
+					case 1: // RIGHT
+						if (e.second.first.front().x + 1 > nScreenWidth-2 
+						|| screen[e.second.first.front().y * nScreenWidth + e.second.first.front().x + 1] == L'*')
+							e.second.first.push_front({ e.second.first.front().x, e.second.first.front().y });
+						else
+							e.second.first.push_front({ e.second.first.front().x + 1, e.second.first.front().y });
+						break;
+					case 2: // DOWN
+						if (e.second.first.front().y + 1 > nScreenHeight-2 
+						|| screen[(e.second.first.front().y + 1) * nScreenWidth + e.second.first.front().x] == L'*')
+							e.second.first.push_front({ e.second.first.front().x, e.second.first.front().y });
+						else
+							e.second.first.push_front({ e.second.first.front().x, e.second.first.front().y + 1 });
+						break;
+					case 3: // LEFT
+						if (e.second.first.front().x - 1 < 1 
+						|| screen[e.second.first.front().y * nScreenWidth + e.second.first.front().x - 1] == L'*')
+							e.second.first.push_front({ e.second.first.front().x, e.second.first.front().y });
+						else
+							e.second.first.push_front({ e.second.first.front().x - 1, e.second.first.front().y });
+						break;
+					default:
+						e.second.first.push_front({ e.second.first.front().x, e.second.first.front().y });
+						break;	
+				}
+				}
+				
+				
 				if (!e.second.second.empty())
 					e.second.second.pop_back();
 				}
@@ -712,8 +727,8 @@ int main()
 											screen[by * nScreenWidth + bx] = L']';
 										}
 											
-										if (blck.first % 60 == 0) {
-											treature_tmp = rand() % 4;
+										if (blck.first % 30 == 0) {
+											treature_tmp = rand() % 5;
 											treature.insert({65 + treature_tmp, {bx, by}});
 											screen[by * nScreenWidth + bx] = 65 + treature_tmp;
 										} else {
@@ -773,7 +788,7 @@ int main()
 								break;
 							case 'C':
 								if (nScreenSpeed >= 40)
-									nScreenSpeed -= 20;
+									nScreenSpeed -= 5;
 								else
 									nScreenSpeed = 40;
 								nScore += 400;
@@ -784,6 +799,8 @@ int main()
 								else
 									BombPeriod = 3;
 								nScore += 350;
+							case 'E':
+								lives++;
 							default:
 								break;
 					}
@@ -836,29 +853,98 @@ int main()
 			if (bDead)
 			    swprintf(&screen[15 * nScreenWidth + 40], L"    PRESS 'SPACE' TO PLAY AGAIN    ");
 			
-			if (bomberman.front().x == targetx && bomberman.front().y == targety)
+			if (bomberman.front().x == targetx && bomberman.front().y == targety && enemy.empty())
 				clearlevel = true;
 			
 			if (bKeyPause) {
 				for (int x = 0; x < nScreenWidth*nScreenHeight; x++) screen[x] = 0;
 				swprintf(&screen[15 * nScreenWidth + 40], L"    		PAUSE				   ");
-				swprintf(&screen[17 * nScreenWidth + 40], L"    		%d				   ", (0x8000 & GetAsyncKeyState((unsigned char)('\x50'))));
-				system("pause");
+				swprintf(&screen[18 * nScreenWidth + 40], 30, L" * Resume          ");
+				swprintf(&screen[20 * nScreenWidth + 40], 30, L"   Exit          ");
+								
+				// swprintf(&screen[17 * nScreenWidth + 40], L"    		%d				   ", (0x8000 & GetAsyncKeyState((unsigned char)('\x50'))));
+				// system("pause");
+				bool bKeyResume = false, bKeyChoice = false;
+				choiceflop = 0;
 				/*
-				while ((0x8000 & GetAsyncKeyState((unsigned char)('\x50'))) == 0) {
+				while (!bKeyResume) {
+					bKeyResume = (0x8000 & GetAsyncKeyState((unsigned char)('\x20')));
 					swprintf(&screen[15 * nScreenWidth + 40], L"    		PAUSE				   ");
-					swprintf(&screen[17 * nScreenWidth + 40], L"    		%d				   ", (0x8000 & GetAsyncKeyState((unsigned char)('\x50'))));
+					int choice = 0;
+					
+					while (chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now() - t1).count() < 120 && !bstartKey)
+					{
+						bKeyResume = (0x8000 & GetAsyncKeyState((unsigned char)('\x20'))) != 0;
+						if (bKeyResume)
+							break;
+					}
+		
+					swprintf(&screen[18 * nScreenWidth + 40], L" * Resume ");
+					swprintf(&screen[18 * nScreenWidth + 40], L" * Exit ");
+					
+					WriteConsoleOutputCharacterW(hConsole, screen, nScreenWidth * nScreenHeight, { 0,0 }, &dwBytesWritten);
+					// swprintf(&screen[17 * nScreenWidth + 40], L"    		%d				   ", (0x8000 & GetAsyncKeyState((unsigned char)('\x50'))));
 				};
 				*/
-			}
-			
 				
+				while (!bKeyResume){
+		
+					auto t1 = chrono::system_clock::now();
+					bKeyResume = 0x8000 & GetAsyncKeyState((unsigned char)('\x20'));
+		
+					if (bKeyResume)
+						break;
+			
+					while (chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now() - t1).count() < 120 && !bKeyResume)
+					{
+						bKeyChoice = (0x8000 & GetAsyncKeyState((unsigned char)('\x51'))) != 0;
+						if (bKeyResume)
+							break;
+					}
+		
+					if (bKeyResume)
+						break;
+		
+					// swprintf(&screen[24 * nScreenWidth + 40], 30, L" choiceflop: %d           ", choiceflop);
+		
+					if (bKeyChoice) {
+						choiceflop %= 2;
+			
+						switch (choiceflop+1) {
+							case 1:
+								swprintf(&screen[18 * nScreenWidth + 40], 30, L" * Resume          ");
+								swprintf(&screen[20 * nScreenWidth + 40], 30, L"   Exit          ");
+								break;
+							case 2:
+								swprintf(&screen[18 * nScreenWidth + 40], 30, L"   Resume          ");
+								swprintf(&screen[20 * nScreenWidth + 40], 30, L" * Exit          ");
+								break;
+			
+							default:
+								swprintf(&screen[18 * nScreenWidth + 40], 30, L" * Resume          ");
+								swprintf(&screen[20 * nScreenWidth + 40], 30, L"   Exit          ");
+								break;
+						}
+						choiceflop++;
+					}
+					if (bKeyResume)
+						break;
+					WriteConsoleOutputCharacterW(hConsole, screen, nScreenWidth * nScreenHeight, { 0,0 }, &dwBytesWritten);
+				}
+				if ((choiceflop+1) % 2) {
+					GameToexit = true;
+					for (int x = 0; x < nScreenWidth*nScreenHeight; x++) screen[x] = 0;
+					WriteConsoleOutputCharacterW(hConsole, screen, nScreenWidth * nScreenHeight, { 0,0 }, &dwBytesWritten);
+					break;
+				}
+			}
 			// Display Frame
 			WriteConsoleOutputCharacterW(hConsole, screen, nScreenWidth * nScreenHeight, { 0,0 }, &dwBytesWritten);
 		}	
 		
+		for (int x = 0; x < nScreenWidth*nScreenHeight; x++) screen[x] = 0;
+			
 		if (clearlevel) {
-			for (int x = 0; x < nScreenWidth*nScreenHeight; x++) screen[x] = 0;
 			
 			swprintf(&screen[15 * nScreenWidth + 40], L"LEVEL COMPLETE");
 			WriteConsoleOutputCharacterW(hConsole, screen, nScreenWidth * nScreenHeight, { 0,0 }, &dwBytesWritten);
@@ -870,9 +956,8 @@ int main()
 				WriteConsoleOutputCharacterW(hConsole, screen, nScreenWidth * nScreenHeight, { 0,0 }, &dwBytesWritten);
 			}	
 			
-			for (int x = 0; x < nScreenWidth*nScreenHeight; x++) {
-				screen[x] = 0;
-			}
+			for (int x = 0; x < nScreenWidth*nScreenHeight; x++) screen[x] = 0;
+			
 			clearlevel = false;
 			bombclock.clear();
 			//temp_bombNumber = 0;
@@ -916,6 +1001,28 @@ int main()
 			// bomberman.clear();
 			// bomberman.push_back({bombermanOriX, bombermanOriY});
 		}
+	}
+		
+	if (!lives) {
+		bool bexitKey = false;
+		for (int x = 0; x < nScreenWidth*nScreenHeight; x++) screen[x] = 0;
+		while (!bexitKey){
+			bexitKey = 0x8000 & GetAsyncKeyState((unsigned char)('\x5a'));
+			swprintf(&screen[9 * nScreenWidth + 40], 22, L"GAME OVER");
+			WriteConsoleOutputCharacterW(hConsole, screen, nScreenWidth * nScreenHeight, { 0,0 }, &dwBytesWritten);
+		}
+		return 0;
+	}
+	
+	if (GameToexit) {
+		bool bexitKey = false;
+		for (int x = 0; x < nScreenWidth*nScreenHeight; x++) screen[x] = 0;
+		while (!bexitKey){
+			bexitKey = 0x8000 & GetAsyncKeyState((unsigned char)('\x5a'));
+			swprintf(&screen[9 * nScreenWidth + 40], 22, L"GAME END");
+			WriteConsoleOutputCharacterW(hConsole, screen, nScreenWidth * nScreenHeight, { 0,0 }, &dwBytesWritten);
+		}
+		return 0;
 	}
 	return 0;
 }
